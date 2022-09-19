@@ -1,0 +1,19 @@
+dataloader:
+  batch_size: 16
+  drop_last: true
+  num_workers: 4
+  shuffle: true
+dataset:
+  dataset_name: vision_slam
+general:
+  device: cuda
+  end_epoch: 1087
+  n_epoch_per_save: 4
+  start_epoch: 187
+logs:
+  flush_secs: 30
+  log_dir: model1-exp3
+model:
+  save_name: model1-exp3.pth
+optimizer:
+  lr: 1.0e-05
