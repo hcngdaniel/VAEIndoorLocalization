@@ -9,8 +9,9 @@ from torchvision import transforms
 
 
 class Dataset(torch.utils.data.Dataset):
-    def __init__(self, dataset_name):
+    def __init__(self, dataset_name, data_augmentation=True):
         self.dataset_name = dataset_name
+        self.data_augmentation = data_augmentation
         self.dataset_root = os.path.join(os.path.dirname(__file__), f'datasets/{dataset_name}')
         self.image_root_path = os.path.join(self.dataset_root, 'image')
         self.pose_root_path = os.path.join(self.dataset_root, 'pose')
@@ -20,6 +21,7 @@ class Dataset(torch.utils.data.Dataset):
         self.image_transforms = transforms.Compose([
             transforms.ToTensor(),
             transforms.Normalize([127.5], [127.5]),
+            transforms.RandomApply(0.3),
         ])
 
     def __len__(self):
